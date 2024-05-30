@@ -1,0 +1,44 @@
+.big-calendar-container {
+    width: 100%; /* Full width */
+    height: 75vh; /* Full height of the viewport */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  
+  .rbc-calendar {
+    height: 100%;
+    width: 100%;
+  }
+  
+  .rbc-toolbar {
+    background: #007bff;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+  }
+  
+  .rbc-toolbar button {
+    color: white;
+    background: transparent;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  
+  .rbc-toolbar button:hover {
+    color: #0056b3;
+  }
+  
+  .rbc-event {
+    background-color: #007bff;
+    border-radius: 5px;
+    padding: 5px;
+    color: white;
+  }
+  
+  .rbc-selected {
+    background-color: #0056b3 !important;
+  }
+  
