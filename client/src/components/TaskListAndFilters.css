@@ -1,201 +1,193 @@
 .task-list-and-filters {
-    display: flex;
-    width: 100%;
-    height: 100vh; /* Full height of the viewport */
-    gap: 20px;
-    padding: 20px;
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
-  }
-  
-  .calendar-container {
-    flex-basis: 60%;
-    display: flex;
-    flex-direction: column;
-    padding: 0;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    height: 75vh;
-    overflow-y: auto;
-  }
-  
-  .tasks-container {
-    flex-basis: 25%;
-    background: white;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box;
-    overflow-y: auto; /* Ensure scrolling for overflow */
-    height: 75vh;
-  }
-  
-  .tasks-container h2 {
-    margin-top: 0;
-    font-size: 1.5rem;
-    color: #333;
-  }
-  
-  .add-task-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .add-task-input {
-    flex-grow: 1;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-  }
-  
-  .task-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    overflow-y: auto; /* Ensure scrolling for overflow */
-  }
-  
-  .task-item {
-    background: #e9ecef;
-    margin: 10px 0;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    border-radius: 8px;
-    transition: background 0.3s;
-  }
-  
-  .task-item:hover {
-    background: #dee2e6;
-  }
-  
-  .task-content {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    cursor: pointer; /* Indicate that the title is clickable */
-  }
-  
-  .task-title {
-    margin: 0;
-    font-size: 1rem;
-  }
-  
-  .task-date {
-    font-size: 0.8rem;
-    color: #555;
-  }
-  
-  .filters-container {
-    flex-basis: 15%;
-    background: white;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box;
-    overflow-y: auto; /* Ensure scrolling for overflow */
-    height: 75vh;
-  }
-  
-  .filters-container h3 {
-    margin-top: 0;
-    font-size: 1.25rem;
-    color: #333;
-  }
-  
-  .filter-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .filter-buttons button {
-    background: #007bff;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s;
-  }
-  
-  .filter-buttons button:hover,
-  .filter-buttons button.active {
-    background: #0056b3;
-  }
-  
-  .list-filters {
-    list-style: none;
-    padding: 0;
-    margin: 10px 0;
-  }
-  
-  .list-filters li {
-    margin-bottom: 10px;
-  }
-  
-  .list-filters button {
-    width: 100%;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s;
-  }
-  
-  .list-filters button:hover,
-  .list-filters button.active {
-    opacity: 0.8;
-  }
-  
-  .add-list-container {
-    margin-top: 20px;
-  }
-  
-  .add-list-input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    margin-bottom: 10px;
-  }
-  
-  .add-list-input:focus {
-    border: 1px solid #007bff;
-    outline: none;
-  }
-  
-  .add-list-container button {
-    width: 100%;
-    background: #007bff;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s;
-  }
-  
-  .add-list-container button:hover {
-    background: #0056b3;
-  }
-  
-  .add-task-container button {
-    background: #007bff;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s;
-  }
-  
-  .add-task-container button:hover {
-    background: #0056b3;
-  }
-  
+  display: flex;
+  gap: 20px;
+  font-family: 'Roboto', sans-serif;
+  height: 95vh;
+  overflow: hidden;
+}
+
+.calendar-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tasks-and-filters-horizontal {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  height: 100%;
+}
+
+.tasks-container {
+  width: 25%;
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.tasks-container h2 {
+  margin-top: 0;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.add-task-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.add-task-input {
+  flex: 1;
+}
+
+.task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  height: 75vh;
+  overflow-y: auto;
+}
+
+.task-item {
+  background: #e9ecef;
+  margin: 10px 0;
+  padding: 15px;
+  border-left: 5px solid;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+.task-item:hover {
+  background: #dee2e6;
+}
+
+.task-item .task-content {
+  flex: 1;
+  cursor: pointer;
+}
+
+.task-item .task-actions {
+  display: flex;
+  align-items: center;
+}
+
+.task-title {
+  margin: 0 0 5px 10px;
+  font-size: 1.25rem;
+}
+
+.task-date {
+  margin: 5px 0;
+  color: #555;
+}
+
+.filters-container {
+  width: 15%;
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.filters-container h3 {
+  margin-top: 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+.filter-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.filter-buttons .MuiFormControl-root {
+  width: 100%;
+}
+
+.filter-buttons .MuiFormControlLabel-root {
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+.filter-buttons .MuiRadio-root {
+  padding: 0 10px 0 0;
+}
+
+.filter-buttons .MuiFormControlLabel-label {
+  flex: 1;
+  font-size: 0.6rem;
+  /* Smaller font size */
+}
+
+.list-filters {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  overflow-y: auto;
+}
+
+.list-filters li {
+  margin: 10px 0;
+}
+
+.list-filters button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-size: 0.875rem;
+  /* Smaller font size */
+}
+
+.list-filters button:hover {
+  filter: brightness(90%);
+}
+
+.list-filters .active {
+  background: #0056b3;
+  color: white;
+}
+
+.add-list-container {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.add-list-input {
+  flex: 1;
+}
+
+.add-list-container button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-size: 0.6rem;
+  /* Smaller font size */
+}
+
+.add-list-container button:hover {
+  background: #0056b3;
+}

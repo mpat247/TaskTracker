@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Modal, Box, TextField, Button, Typography } from '@mui/material';
+import { Modal, Box, TextField, Button, Typography, MenuItem, Select, FormControl, InputLabel } from '@mui/material';
 import axios from 'axios';
 
 const modalStyle = {
@@ -14,32 +14,42 @@ const modalStyle = {
   p: 4,
 };
 
-const TaskModal = ({ open, handleClose, fetchTasks, task, onDelete }) => {
+const TaskModal = ({ open, handleClose, fetchTasks, task, onDelete, lists }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [category, setCategory] = useState('');
+  const [list, setList] = useState('');
   const [dateDue, setDateDue] = useState('');
+  const [priority, setPriority] = useState(0);
 
   useEffect(() => {
     if (task) {
       setTitle(task.title);
       setDescription(task.description);
-      setCategory(task.category);
+      setList(task.list); // Ensure this is the list ID
       setDateDue(task.dateDue ? task.dateDue.split('T')[0] : '');
+      setPriority(task.priority || 0);
     } else {
       setTitle('');
       setDescription('');
-      setCategory('');
+      setList('');
       setDateDue('');
+      setPriority(0);
     }
   }, [task]);
 
   const handleSubmit = async () => {
-    const taskData = { title, description, category, dateDue };
+    const taskData = {
+      title,
+      description,
+      list,
+      dateDue,
+      priority,
+      completed: task ? task.completed : false
+    };
     if (task) {
-      await axios.put(`http://localhost:5000/tasks/${task._id}`, taskData);
+      await axios.put(`http://localhost:5005/tasks/${task._id}`, taskData);
     } else {
-      await axios.post('http://localhost:5000/tasks', taskData);
+      await axios.post('http://localhost:5005/tasks', taskData);
     }
     fetchTasks();
     handleClose();
@@ -55,7 +65,7 @@ const TaskModal = ({ open, handleClose, fetchTasks, task, onDelete }) => {
   return (
     <Modal open={open} onClose={handleClose}>
       <Box sx={modalStyle}>
-        <Typography variant="h6" component="h2">
+        <Typography variant="h6" component="h2" align="center">
           {task ? 'Edit Task' : 'Add New Task'}
         </Typography>
         <TextField
@@ -72,13 +82,21 @@ const TaskModal = ({ open, handleClose, fetchTasks, task, onDelete }) => {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-        <TextField
-          fullWidth
-          margin="normal"
-          label="Category"
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-        />
+        <FormControl fullWidth margin="normal">
+          <InputLabel>List</InputLabel>
+          <Select
+            value={list}
+            onChange={(e) => {
+              setList(e.target.value);
+            }}
+          >
+            {lists.map(listItem => (
+              <MenuItem key={listItem._id} value={listItem._id}>
+                {listItem.name}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
         <TextField
           fullWidth
           margin="normal"
@@ -88,14 +106,24 @@ const TaskModal = ({ open, handleClose, fetchTasks, task, onDelete }) => {
           value={dateDue}
           onChange={(e) => setDateDue(e.target.value)}
         />
-        <Button variant="contained" color="primary" onClick={handleSubmit}>
-          {task ? 'Update Task' : 'Add Task'}
-        </Button>
-        {task && (
-          <Button variant="contained" color="secondary" onClick={handleDelete} style={{ marginTop: '10px' }}>
-            Delete Task
+        <TextField
+          fullWidth
+          margin="normal"
+          label="Priority"
+          type="number"
+          value={priority}
+          onChange={(e) => setPriority(e.target.value)}
+        />
+        <Box display="flex" justifyContent="space-between" marginTop="20px">
+          <Button variant="contained" color="primary" onClick={handleSubmit}>
+            {task ? 'Update Task' : 'Add Task'}
           </Button>
-        )}
+          {task && (
+            <Button variant="contained" color="secondary" onClick={handleDelete}>
+              Delete Task
+            </Button>
+          )}
+        </Box>
       </Box>
     </Modal>
   );

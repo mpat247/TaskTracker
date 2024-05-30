@@ -25,8 +25,7 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Container maxWidth="xl" className="app-container">
-      <Typography variant="h3" align="center" gutterBottom style={{ marginTop: '2.5vh', fontFamily: 'Roboto', fontSize: '5rem', color: '#007bff', textTransform: 'uppercase', letterSpacing: '2px', textShadow: '2px 2px 4px rgba(0, 0, 0, 0.2)' }}>
-  Task Tracker
+      <Typography variant="h3" align="center" gutterBottom style={{ marginTop: '2vh', fontFamily: 'Roboto', fontSize: '3rem', color: '#007bff', textTransform: 'uppercase', letterSpacing: '2px', textShadow: '2px 2px 4px rgba(0, 0, 0, 0.2)' }}>
 </Typography>
 
         <TaskListAndFilters />

@@ -6,7 +6,7 @@ const taskRoutes = require('./routes/taskRoutes');
 const listRoutes = require('./routes/listRoutes');
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5005;
 
 mongoose.connect('mongodb+srv://admin:admin@TaskTracker.nksfoxj.mongodb.net/tasktracker', {
   useNewUrlParser: true,
